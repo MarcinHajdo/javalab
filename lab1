@@ -1,0 +1,65 @@
+package agh.cs.lab1;
+
+
+import java.io.PrintStream;
+import java.util.Scanner;
+
+public class World {
+    public static void main(String[] args) {
+        System.out.println("Start");
+        Direction[] tab=change(args);
+        run(tab);
+        System.out.println("Stop");
+    }
+    public static void run(Direction[] args) {
+        for(int i=0;i< args.length;i++) {
+            switch (args[i]) {
+                case FORWARD:
+                    System.out.println("Zwierzak idzie do przodu");
+                    break;
+                case BACKWARD:
+                    System.out.println("Zwierzak idzie do tylu");
+                    break;
+                case RIGHT:
+                    System.out.println("Zwierzak idzie w prawo");
+                    break;
+                case LEFT:
+                    System.out.println("Zwierzak idzie w lewo");
+                    break;
+                case ERROR:
+                    System.out.println("Nieprawidlowy kierunek");
+                    break;
+            }
+        }
+    }
+    public static Direction[] change(String[] args) {
+        Direction tab[]=new Direction[args.length];
+        for (int i = 0; i < args.length; i++) {
+            switch (args[i]) {
+                case "f":
+                    tab[i]=Direction.FORWARD;
+                    break;
+                case "b":
+                    tab[i]=Direction.BACKWARD;
+                    break;
+                case "r":
+                    tab[i]=Direction.RIGHT;
+                    break;
+                case "l":
+                    tab[i]=Direction.LEFT;
+                    break;
+                default:
+                    tab[i]=Direction.ERROR;
+                    break;
+            }
+        }
+        return tab;
+    }
+    enum Direction {
+        FORWARD,
+        BACKWARD,
+        RIGHT,
+        LEFT,
+        ERROR
+    }
+}
